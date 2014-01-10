@@ -1,4 +1,4 @@
-# Airbnb JavaScript Style Guide() {
+# Preston's JavaScript Style Guide() {
 
 *A mostly reasonable approach to JavaScript*
 
@@ -14,6 +14,7 @@
   1. [Variables](#variables)
   1. [Hoisting](#hoisting)
   1. [Conditional Expressions & Equality](#conditionals)
+  1. [Switch](#switch)
   1. [Blocks](#blocks)
   1. [Comments](#comments)
   1. [Whitespace](#whitespace)
@@ -602,6 +603,35 @@
 
     **[[⬆]](#TOC)**
 
+## <a name='switch'>Switch</a>
+
+  - Do not depend on fallthru logic with `switch` statements. Relying on fallthru is much more difficult to understand and debug.
+
+    ```javascript
+    // good
+    switch (x) {
+      case 1:
+        count++;
+        break;
+      case 2:
+        count++;
+        action();
+        break;
+    }
+        
+    // bad
+    switch (x) {
+      case 1:
+        count++; // applies to all following cases until break;
+      case 2:
+        action();
+        break;
+    }
+    ```
+    
+  - Read more information at http://yuiblog.com/blog/2007/04/25/id-rather-switch-than-fight/
+
+    **[[⬆]](#TOC)**
 
 ## <a name='blocks'>Blocks</a>
 
